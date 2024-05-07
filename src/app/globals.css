@@ -2,32 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+@layout base{
+    body{
+        overflow-x:hidden;
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@layer components{
+    .header_top_icon{
+        @apply bg-gray-200 rounded-md p-[4px] text-[12px] cursor-pointer hover:bg-accent hover:text-white
+    }
+
+    .navbar_link:hover{
+        color:#FFE19C;
+        transition:all 0.4s;
+    }
+    .navbar_link::after{
+        position:absolute;
+        content:"";
+        background-color: #FFE19C ;
+        height: 3px;
+        width:100%;
+        bottom:-5px;
+        left:0;
+        scale:0;
+        transform-origin: left;
+        transition:all 0.4s;
+    }
+    .navbar_link:hover::after{
+        scale:1;
+    }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+/* body{
+    background-color: #f5f5ef;
+} */
